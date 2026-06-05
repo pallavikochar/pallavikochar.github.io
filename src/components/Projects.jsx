@@ -111,6 +111,10 @@ const ACCENT_STYLES = {
     dark: { badge: 'bg-orange-500/10 text-orange-400 border border-orange-500/20', metric: 'text-orange-400' },
     light: { badge: 'bg-orange-100 text-orange-700 border border-orange-200', metric: 'text-orange-600' },
   },
+  cyan: {
+    dark: { badge: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20', metric: 'text-cyan-400' },
+    light: { badge: 'bg-cyan-100 text-cyan-700 border border-cyan-200', metric: 'text-cyan-600' },
+  },
 }
 
 function ProjectCard({ project, index, darkMode }) {
