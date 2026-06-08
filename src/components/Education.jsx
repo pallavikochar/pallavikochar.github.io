@@ -10,7 +10,7 @@ const EDUCATION = [
     degree: 'Master of Science in Finance',
     concentrations: ['Quantitative Finance', 'Data Analytics'],
     concLabel: 'Concentrations',
-    period: 'Aug 2024 – May 2026',
+    period: 'Jan 2025 – May 2026',
     location: 'Champaign, IL',
     logoImg: `${import.meta.env.BASE_URL}uiuc.png`,
     color: 'from-orange-500 to-amber-600',
