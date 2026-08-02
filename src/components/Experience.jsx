@@ -5,35 +5,34 @@ import { MapPin, Calendar, ChevronDown } from 'lucide-react'
 
 const EXPERIENCES = [
   {
-    company: 'FAlpha.ai',
-    role: 'Data Product Engineer Intern',
-    period: 'Apr 2026 – May 2026',
-    location: 'New York, NY',
+    company: 'fAlpha.ai',
+    role: 'Quant Data Engineer Intern',
+    period: 'Mar 2026 – May 2026',
+    location: 'New York City, NY',
     type: 'Internship',
-    color: 'from-blue-500 to-indigo-600',
-    bullet_color: 'bg-blue-400',
+    color: 'from-accent to-accent-dark',
+    bullet_color: 'bg-accent-light',
     bullets: [
-      'Built an explainable AI layer over prediction models, enabling transparent, auditable investment signals for portfolio managers.',
-      'Benchmarked SHAP vs. Integrated Gradients for production deployment, evaluating fidelity, computational cost, and interpretability trade-offs.',
-      'Designed evaluation framework to validate explainability outputs against ground-truth model behavior at scale.',
+      'Engineered a SHAP-based feature attribution framework in Python to decompose multi-factor predictive equity models into per-feature sensitivity metrics; parallelized matrix operations to balance attribution fidelity against runtime.',
+      'Built an LLM-powered synthesis layer compiling multi-model predictive signals into structured equity research briefs.',
     ],
-    tags: ['Python', 'SHAP', 'Explainable AI', 'ML'],
+    tags: ['Python', 'SHAP', 'Explainable AI', 'LLM', 'Equity Research'],
   },
   {
-    company: 'Kotak Securities',
-    role: 'Backend Engineer',
-    period: 'Jun 2022 – Jul 2024',
+    company: 'Kotak Securities Limited',
+    role: 'Software Developer (Promoted 3x, IT Champion Award FY 2023–24)',
+    period: 'Jun 2022 – Dec 2024',
     location: 'Mumbai, India',
     type: 'Full-time',
-    color: 'from-emerald-500 to-teal-600',
-    bullet_color: 'bg-emerald-400',
+    color: 'from-steel to-steel-dark',
+    bullet_color: 'bg-steel-light',
     bullets: [
-      'Architected and delivered an automated SIP auto-debit system processing 10,000+ monthly transactions at 99.9% accuracy using C#, SSIS, and SQL Server. Eliminated manual reconciliation entirely.',
-      'Built AWS data pipelines integrating Salesforce CRM data, improving data engineering efficiency by 30% and enabling real-time client analytics.',
-      'Saved 200 IT hours/month by automating reporting workflows and operational processes across the trading platform.',
-      'Optimized portfolio-tracker microservices for latency and throughput, saving 50+ developer-hours per week through architectural refactoring and query optimization.',
+      "Built the SIP auto-debit execution path for Smallcase baskets in C#/.NET and SQL Server, with idempotent retry and daily reconciliation so duplicate instructions under at-least-once delivery could not double-debit.",
+      'Optimized 50+ relational database queries, joins, and stored procedures across 10M+ financial records, ensuring strict data integrity and cutting manual reporting overhead by 50+ hours weekly.',
+      'Distributed AWS data pipelines (S3, Glue, Step Functions, Lambda, Docker) to ingest and sync unstructured market and CRM data, improving analytics workflow efficiency by 30%.',
+      'Engineered a Kafka/SQS streaming pipeline cross-checking PAN records against IP data, flagging 10+ fraudulent accounts monthly under KYC compliance.',
     ],
-    tags: ['C#', 'SQL Server', 'SSIS', 'AWS', 'Salesforce', 'Microservices'],
+    tags: ['C#/.NET', 'SQL Server', 'AWS', 'Kafka', 'SQS', 'KYC Compliance'],
   },
   {
     company: 'Metvy',
@@ -41,8 +40,8 @@ const EXPERIENCES = [
     period: 'Jun 2021 – Jul 2021',
     location: 'Mumbai, India',
     type: 'Trainee',
-    color: 'from-rose-500 to-pink-600',
-    bullet_color: 'bg-rose-400',
+    color: 'from-rust to-rust-dark',
+    bullet_color: 'bg-rust-light',
     bullets: [
       'Attended 15+ expert sessions across 8 aspects of entrepreneurship to understand the venture creation process.',
       'Developed a startup concept, conducted cost analysis, devised revenue strategies, and pitched to a panel of 10+ judges.',
@@ -55,8 +54,8 @@ const EXPERIENCES = [
     period: 'May 2021 – Jul 2021',
     location: 'Gurgaon, India',
     type: 'Internship',
-    color: 'from-purple-500 to-violet-600',
-    bullet_color: 'bg-purple-400',
+    color: 'from-market to-market-dark',
+    bullet_color: 'bg-market-light',
     bullets: [
       'Designed an AI chatbot using NLP techniques to conduct initial screenings, reducing manual recruiter workload by 60%.',
       'Trained ML algorithms to assess responses, improving prediction accuracy by 25% compared to rule-based methods.',
@@ -69,8 +68,8 @@ const EXPERIENCES = [
     period: 'Nov 2020 – Jan 2021',
     location: 'Mumbai, India',
     type: 'Internship',
-    color: 'from-sky-500 to-cyan-600',
-    bullet_color: 'bg-sky-400',
+    color: 'from-accent to-accent-dark',
+    bullet_color: 'bg-accent-light',
     bullets: [
       'Customized features for the JioPhone Next in partnership with Google, targeting 300M+ users in India\'s mass market.',
       'Recommended strategic product enhancements that contributed to an estimated 15% higher adoption in Tier-2 cities.',
@@ -83,8 +82,8 @@ const EXPERIENCES = [
     period: 'May 2020 – Jul 2020',
     location: 'Mumbai, India',
     type: 'Apprenticeship',
-    color: 'from-green-500 to-emerald-600',
-    bullet_color: 'bg-green-400',
+    color: 'from-steel to-steel-dark',
+    bullet_color: 'bg-steel-light',
     bullets: [
       'Developed a web application to visualize and analyze shortest-path algorithms, integrating A*, Dijkstra, Best-First, and Breadth-First search for efficient distance calculation.',
     ],
@@ -106,7 +105,7 @@ function ExperienceCard({ exp, index, darkMode }) {
       className="relative pl-8 pb-12 last:pb-0"
     >
       {/* Timeline line */}
-      <div className={`absolute left-0 top-2 bottom-0 w-px ${darkMode ? 'bg-blue-500/15' : 'bg-blue-200'}`} />
+      <div className={`absolute left-0 top-2 bottom-0 w-px ${darkMode ? 'bg-accent/15' : 'bg-accent/20'}`} />
 
       {/* Timeline dot */}
       <div className={`absolute left-0 top-2 -translate-x-1/2 w-3 h-3 rounded-full border-2 border-accent bg-gradient-to-br ${exp.color}`} />
@@ -114,8 +113,8 @@ function ExperienceCard({ exp, index, darkMode }) {
       <div
         className={`rounded-2xl border overflow-hidden ${
           darkMode
-            ? 'border-blue-500/10 bg-navy-900'
-            : 'border-slate-200 bg-white shadow-sm'
+            ? 'border-accent/10 bg-ink-900'
+            : 'border-stone-200 bg-white shadow-sm'
         }`}
       >
         {/* Clickable Header */}
@@ -125,13 +124,13 @@ function ExperienceCard({ exp, index, darkMode }) {
         >
           <div>
             <div className="flex items-center gap-2 mb-1">
-              <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-lg font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>
                 {exp.role}
               </h3>
               <span className={`px-2 py-0.5 text-xs rounded-full ${
                 exp.type === 'Full-time'
-                  ? darkMode ? 'bg-emerald-500/15 text-emerald-400' : 'bg-emerald-100 text-emerald-700'
-                  : darkMode ? 'bg-blue-500/15 text-blue-400' : 'bg-blue-100 text-blue-700'
+                  ? darkMode ? 'bg-market/15 text-market-light' : 'bg-market/10 text-market-dark'
+                  : darkMode ? 'bg-accent/15 text-accent-light' : 'bg-accent/10 text-accent-dark'
               }`}>
                 {exp.type}
               </span>
@@ -140,17 +139,17 @@ function ExperienceCard({ exp, index, darkMode }) {
           </div>
           <div className="flex items-center gap-4">
             <div className="text-right">
-              <div className={`flex items-center gap-1.5 text-sm ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+              <div className={`flex items-center gap-1.5 text-sm ${darkMode ? 'text-stone-400' : 'text-stone-500'}`}>
                 <Calendar size={13} />
                 {exp.period}
               </div>
-              <div className={`flex items-center gap-1.5 text-xs mt-1 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+              <div className={`flex items-center gap-1.5 text-xs mt-1 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
                 <MapPin size={11} />
                 {exp.location}
               </div>
             </div>
             <motion.div animate={{ rotate: open ? 180 : 0 }} transition={{ duration: 0.2 }}>
-              <ChevronDown size={16} className={darkMode ? 'text-slate-500' : 'text-slate-400'} />
+              <ChevronDown size={16} className={darkMode ? 'text-stone-500' : 'text-stone-400'} />
             </motion.div>
           </div>
         </button>
@@ -165,13 +164,13 @@ function ExperienceCard({ exp, index, darkMode }) {
               transition={{ duration: 0.25, ease: 'easeInOut' }}
               className="overflow-hidden"
             >
-              <div className={`px-6 pb-6 border-t ${darkMode ? 'border-blue-500/10' : 'border-slate-100'}`}>
+              <div className={`px-6 pb-6 border-t ${darkMode ? 'border-accent/10' : 'border-stone-100'}`}>
                 {/* Bullets */}
                 <ul className="space-y-2 mt-4 mb-4">
                   {exp.bullets.map((b, i) => (
                     <li key={i} className="flex items-start gap-2.5">
                       <span className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 ${exp.bullet_color}`} />
-                      <span className={`text-sm leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-600'}`}>{b}</span>
+                      <span className={`text-sm leading-relaxed ${darkMode ? 'text-stone-300' : 'text-stone-600'}`}>{b}</span>
                     </li>
                   ))}
                 </ul>
@@ -183,8 +182,8 @@ function ExperienceCard({ exp, index, darkMode }) {
                       key={t}
                       className={`px-2.5 py-1 text-xs font-mono rounded-md ${
                         darkMode
-                          ? 'bg-navy-800 text-slate-400 border border-slate-700'
-                          : 'bg-slate-100 text-slate-600 border border-slate-200'
+                          ? 'bg-ink-800 text-stone-400 border border-stone-700'
+                          : 'bg-stone-100 text-stone-600 border border-stone-200'
                       }`}
                     >
                       {t}
@@ -204,7 +203,7 @@ export default function Experience({ darkMode }) {
   return (
     <SectionWrapper
       id="experience"
-      className={darkMode ? 'bg-[#080e20]' : 'bg-slate-50'}
+      className={darkMode ? 'bg-ink-950' : 'bg-stone-50'}
     >
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader

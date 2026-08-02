@@ -1,7 +1,7 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import SectionWrapper, { SectionHeader } from './SectionWrapper'
-import { ExternalLink, TrendingUp, BarChart2, Activity, Brain, Layers } from 'lucide-react'
+import { ExternalLink, TrendingUp, BarChart2, Activity, Layers, Landmark } from 'lucide-react'
 
 function IconGithub({ size = 14 }) {
   return (
@@ -13,81 +13,81 @@ function IconGithub({ size = 14 }) {
 
 const PROJECTS = [
   {
-    title: 'Satellite-Anchored Multi-Agent Trading System',
+    title: 'Multi-Asset Exotic Derivatives Pricing Model',
     description:
-      'Multi-agent equity-trading system for Permian E&P names. Deterministic Python core with GPT-4o-mini qualitative agents for news and sentiment analysis. Backtested a satellite-anchored pre-earnings strategy: 18 trades, 83% hit rate, +13.5% return on $1M notional, 0.35 per-trade Sharpe ratio.',
-    icon: TrendingUp,
-    color: 'from-blue-500 to-indigo-600',
-    accent: 'blue',
-    tags: ['Python', 'GPT-4o-mini', 'Multi-Agent', 'Backtesting', 'NLP', 'Quant'],
-    metrics: [
-      { label: 'Hit Rate', value: '83%' },
-      { label: 'Return', value: '+13.5%' },
-      { label: 'Sharpe', value: '0.35' },
-    ],
-    github: 'https://github.com/pallavikochar/oil-gas-multi-agent-trading-system',
-    demo: null,
-  },
-  {
-    title: 'Top-Down Stock Selection Engine',
-    description:
-      'Multi-agent Python system running an 11-step top-down investment process: Economy → Cycle → Scenarios → Sector → Style → Factor Screen → Fundamental → Valuation → Risk → Recommendation → Report. Each agent does one job and hands off structured JSON to the next. React frontend renders the full funnel visually.',
-    icon: Layers,
-    color: 'from-cyan-500 to-blue-600',
-    accent: 'cyan',
-    tags: ['Python', 'Multi-Agent', 'React', 'FRED', 'yfinance', 'Top-Down'],
-    metrics: [
-      { label: 'Agents', value: '11' },
-      { label: 'Method', value: 'Top-Down' },
-      { label: 'Stack', value: 'Python + React' },
-    ],
-    github: 'https://github.com/pallavikochar/stock-selection-topdown-method',
-    demo: null,
-  },
-  {
-    title: 'Structured Product Valuation',
-    description:
-      'Priced a 2-year worst-of auto-callable note on AAPL / AMZN / GOOGL via Monte Carlo simulation in Python. Used correlated GBM with Cholesky decomposition, Bloomberg volatility surfaces, and OIS discounting. Modeled memory coupon mechanics, quarterly autocall schedule, and a 50% barrier.',
+      'Simulated correlated GBM paths via Cholesky factorization of the implied correlation matrix under a 50% barrier, quarterly autocall, and memory-coupon structure, reaching a Monte Carlo standard error of $0.74 on a $978 price per $1,000 face. Reconciled payoff logic against a static decomposition (zero-coupon bond, short worst-of down-and-in put, autocall strip) and estimated delta and vega by bump-and-revalue under common random numbers to suppress finite-difference noise.',
     icon: BarChart2,
-    color: 'from-emerald-500 to-teal-600',
-    accent: 'emerald',
-    tags: ['Python', 'Monte Carlo', 'Cholesky', 'Bloomberg', 'Derivatives', 'GBM'],
+    color: 'from-rust to-rust-dark',
+    accent: 'rust',
+    tags: ['Python', 'Monte Carlo', 'Cholesky', 'GBM', 'Autocallable', 'Greeks'],
     metrics: [
-      { label: 'Assets', value: '3' },
-      { label: 'Paths', value: '50K+' },
+      { label: 'MC Std Error', value: '$0.74' },
+      { label: 'Price', value: '$978' },
       { label: 'Barrier', value: '50%' },
     ],
     github: null,
     demo: null,
   },
   {
-    title: 'GARCH Volatility & VaR Modeling',
+    title: 'GARCH Volatility Modeling & Tail Risk (VaR/ES) Framework',
     description:
-      'Implemented GARCH(1,1) on SPY returns using custom Maximum Likelihood Estimation in R without black-box packages. Forecasted conditional volatility, then computed 1-day Value at Risk and Expected Shortfall at the 95% confidence level. Results validated against industry benchmarks.',
+      'Derived and optimized the GARCH(1,1) log-likelihood with stationarity and positivity constraints through reparameterization, reconciling estimates to fGarch and tseries to 4 decimal places. Backtested 95% Value at Risk with Kupiec unconditional-coverage and Christoffersen independence tests, comparing exception counts and clustering across GARCH, historical-simulation, and delta-normal estimators.',
     icon: Activity,
-    color: 'from-violet-500 to-purple-600',
-    accent: 'violet',
-    tags: ['R', 'GARCH', 'MLE', 'VaR', 'Expected Shortfall', 'Time Series'],
+    color: 'from-steel to-steel-dark',
+    accent: 'steel',
+    tags: ['R', 'GARCH', 'MLE', 'VaR', 'Kupiec Test', 'Christoffersen Test'],
     metrics: [
       { label: 'Model', value: 'GARCH(1,1)' },
-      { label: 'Conf.', value: '95%' },
-      { label: 'Asset', value: 'SPY' },
+      { label: 'VaR Conf.', value: '95%' },
+      { label: 'Precision', value: '4 decimals' },
     ],
     github: null,
     demo: null,
   },
   {
-    title: 'Behavioral Analysis of Credit Card Advertising',
+    title: 'Alternative Data Trading Strategy & Ablation Testing',
     description:
-      'Built a full data pipeline on Competiscan competitive intelligence data. Ran controlled experiments to identify which advertising features most influence credit card selection behavior. Analyzed salience effects, framing biases, and feature weighting in consumer decision-making.',
-    icon: Brain,
-    color: 'from-orange-500 to-rose-600',
-    accent: 'orange',
-    tags: ['Python', 'Data Pipeline', 'Behavioral Finance', 'A/B Testing', 'Statistics'],
+      'Built an alternative-data equity strategy on satellite-derived production signals for Permian Basin E&P names, with LLM agents confined to qualitative roles behind a deterministic Python core so P&L stayed reproducible and auditable. Pre-registered the ablation set before evaluating results to separate genuine signal from specification search, reporting a 0.35 per-trade Sharpe and surfacing the gap between an 83% hit rate and risk-adjusted return.',
+    icon: TrendingUp,
+    color: 'from-accent to-accent-dark',
+    accent: 'accent',
+    tags: ['Python', 'Satellite Data', 'LLM Agents', 'Backtesting', 'Ablation Testing'],
     metrics: [
-      { label: 'Source', value: 'Competiscan' },
-      { label: 'Type', value: 'NLP + Stats' },
-      { label: 'Focus', value: 'Behavioral' },
+      { label: 'Hit Rate', value: '83%' },
+      { label: 'Sharpe', value: '0.35' },
+      { label: 'Basin', value: 'Permian' },
+    ],
+    github: 'https://github.com/pallavikochar/oil-gas-multi-agent-trading-system',
+    demo: null,
+  },
+  {
+    title: 'Multi-Agent Systematic Equity Research & Backtesting',
+    description:
+      'Built a hybrid vector-keyword retrieval pipeline (bge-base, HNSW index) over 160K SEC filing chunks with citation scoring, holding warm-query latency to ~740ms. Orchestrated 11 specialized research agents over filing evidence; a 10-year historical backtest yielded 13.9% CAGR and 2.1% alpha over the benchmark index.',
+    icon: Layers,
+    color: 'from-market to-market-dark',
+    accent: 'market',
+    tags: ['Python', 'Multi-Agent', 'HNSW', 'RAG', 'SEC Filings', 'Backtesting'],
+    metrics: [
+      { label: 'Agents', value: '11' },
+      { label: 'CAGR', value: '13.9%' },
+      { label: 'Alpha', value: '2.1%' },
+    ],
+    github: 'https://github.com/pallavikochar/stock-selection-topdown-method',
+    demo: null,
+  },
+  {
+    title: 'Interest Rate & Prepayment Modeling | Busey Bank Practicum',
+    description:
+      "Modeled conditional prepayment rate on bank loan-tape data with XGBoost across borrower and loan-characteristic segments, delivering results to Busey Bank's analytics team. Diagnosed target leakage in the CPR construction — prior and query balances mechanically embedded in the label — rebuilt the feature set, and flagged an inflated segment R² that would not have replicated out-of-sample.",
+    icon: Landmark,
+    color: 'from-rust to-rust-dark',
+    accent: 'rust',
+    tags: ['XGBoost', 'Python', 'Loan Tape', 'Target Leakage', 'Prepayment Modeling'],
+    metrics: [
+      { label: 'Model', value: 'XGBoost' },
+      { label: 'Target', value: 'CPR' },
+      { label: 'Partner', value: 'Busey Bank' },
     ],
     github: null,
     demo: null,
@@ -95,25 +95,21 @@ const PROJECTS = [
 ]
 
 const ACCENT_STYLES = {
-  blue: {
-    dark: { badge: 'bg-blue-500/10 text-blue-400 border border-blue-500/20', metric: 'text-blue-400' },
-    light: { badge: 'bg-blue-100 text-blue-700 border border-blue-200', metric: 'text-blue-600' },
+  accent: {
+    dark: { badge: 'bg-accent/10 text-accent-light border border-accent/20', metric: 'text-accent-light' },
+    light: { badge: 'bg-accent/10 text-accent-dark border border-accent/30', metric: 'text-accent-dark' },
   },
-  emerald: {
-    dark: { badge: 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20', metric: 'text-emerald-400' },
-    light: { badge: 'bg-emerald-100 text-emerald-700 border border-emerald-200', metric: 'text-emerald-600' },
+  market: {
+    dark: { badge: 'bg-market/10 text-market-light border border-market/20', metric: 'text-market-light' },
+    light: { badge: 'bg-market/10 text-market-dark border border-market/30', metric: 'text-market-dark' },
   },
-  violet: {
-    dark: { badge: 'bg-violet-500/10 text-violet-400 border border-violet-500/20', metric: 'text-violet-400' },
-    light: { badge: 'bg-violet-100 text-violet-700 border border-violet-200', metric: 'text-violet-600' },
+  steel: {
+    dark: { badge: 'bg-steel/10 text-steel-light border border-steel/20', metric: 'text-steel-light' },
+    light: { badge: 'bg-steel/10 text-steel-dark border border-steel/30', metric: 'text-steel-dark' },
   },
-  orange: {
-    dark: { badge: 'bg-orange-500/10 text-orange-400 border border-orange-500/20', metric: 'text-orange-400' },
-    light: { badge: 'bg-orange-100 text-orange-700 border border-orange-200', metric: 'text-orange-600' },
-  },
-  cyan: {
-    dark: { badge: 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20', metric: 'text-cyan-400' },
-    light: { badge: 'bg-cyan-100 text-cyan-700 border border-cyan-200', metric: 'text-cyan-600' },
+  rust: {
+    dark: { badge: 'bg-rust/10 text-rust-light border border-rust/20', metric: 'text-rust-light' },
+    light: { badge: 'bg-rust/10 text-rust-dark border border-rust/30', metric: 'text-rust-dark' },
   },
 }
 
@@ -131,8 +127,8 @@ function ProjectCard({ project, index, darkMode }) {
       transition={{ duration: 0.5, delay: (index % 2) * 0.1 }}
       className={`group rounded-2xl border overflow-hidden card-hover flex flex-col ${
         darkMode
-          ? 'border-blue-500/10 bg-navy-900'
-          : 'border-slate-200 bg-white shadow-sm'
+          ? 'border-accent/10 bg-ink-900'
+          : 'border-stone-200 bg-white shadow-sm'
       }`}
     >
 
@@ -144,7 +140,7 @@ function ProjectCard({ project, index, darkMode }) {
             <Icon size={18} className="text-white" />
           </div>
           <div className="flex items-center gap-2 flex-1 min-w-0">
-            <h3 className={`text-base font-semibold leading-snug ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <h3 className={`text-base font-semibold leading-snug ${darkMode ? 'text-white' : 'text-stone-900'}`}>
               {project.title}
             </h3>
             {project.github && (
@@ -152,7 +148,7 @@ function ProjectCard({ project, index, darkMode }) {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`flex-shrink-0 transition-colors ${darkMode ? 'text-slate-500 hover:text-white' : 'text-slate-400 hover:text-slate-900'}`}
+                className={`flex-shrink-0 transition-colors ${darkMode ? 'text-stone-500 hover:text-white' : 'text-stone-400 hover:text-stone-900'}`}
               >
                 <IconGithub size={15} />
               </a>
@@ -165,13 +161,13 @@ function ProjectCard({ project, index, darkMode }) {
           {project.metrics.map(m => (
             <div key={m.label}>
               <div className={`text-xs font-mono font-semibold ${styles.metric}`}>{m.value}</div>
-              <div className={`text-xs mt-0.5 ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}>{m.label}</div>
+              <div className={`text-xs mt-0.5 ${darkMode ? 'text-stone-600' : 'text-stone-400'}`}>{m.label}</div>
             </div>
           ))}
         </div>
 
         {/* Description */}
-        <p className={`text-sm leading-relaxed flex-1 mb-4 ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+        <p className={`text-sm leading-relaxed flex-1 mb-4 ${darkMode ? 'text-stone-400' : 'text-stone-600'}`}>
           {project.description}
         </p>
 
@@ -193,7 +189,7 @@ function ProjectCard({ project, index, darkMode }) {
             target="_blank"
             rel="noopener noreferrer"
             className={`flex items-center gap-1.5 text-xs font-medium transition-colors ${
-              darkMode ? 'text-slate-400 hover:text-accent' : 'text-slate-500 hover:text-accent'
+              darkMode ? 'text-stone-400 hover:text-accent' : 'text-stone-500 hover:text-accent'
             }`}
           >
             <IconGithub size={13} />
@@ -206,7 +202,7 @@ function ProjectCard({ project, index, darkMode }) {
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center gap-1.5 text-xs font-medium transition-colors ${
-                darkMode ? 'text-slate-400 hover:text-accent' : 'text-slate-500 hover:text-accent'
+                darkMode ? 'text-stone-400 hover:text-accent' : 'text-stone-500 hover:text-accent'
               }`}
             >
               <ExternalLink size={13} />
@@ -222,7 +218,7 @@ function ProjectCard({ project, index, darkMode }) {
 
 export default function Projects({ darkMode }) {
   return (
-    <SectionWrapper id="projects" className={darkMode ? 'bg-navy-950' : 'bg-slate-50'}>
+    <SectionWrapper id="projects" className={darkMode ? 'bg-ink-950' : 'bg-stone-50'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Projects"
@@ -242,7 +238,7 @@ export default function Projects({ darkMode }) {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className={`mt-8 text-sm font-mono text-center ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}
+          className={`mt-8 text-sm font-mono text-center ${darkMode ? 'text-stone-600' : 'text-stone-400'}`}
         >
         </motion.p>
       </div>

@@ -7,59 +7,66 @@ const SKILL_GROUPS = [
   {
     category: 'Technical',
     icon: Code2,
-    color: 'from-blue-500 to-indigo-600',
+    color: 'from-steel to-steel-dark',
     tagColor: {
-      dark: 'bg-blue-500/10 text-blue-300 border-blue-500/20',
-      light: 'bg-blue-50 text-blue-700 border-blue-200',
+      dark: 'bg-steel/10 text-steel-light border-steel/20',
+      light: 'bg-steel/10 text-steel-dark border-steel/30',
     },
     skills: [
-      'Python', 'SQL', 'R', 'C# / .NET',
-      'AWS (S3, Lambda, EC2, Glue, RDS)', 'Azure', 'ETL / SSIS',
-      'CI/CD Pipelines', 'GitHub', 'Bloomberg Terminal',
+      'Python', 'SQL (SQL Server, PostgreSQL)', 'R', 'C++', 'C# / .NET',
+      'AWS (S3, Lambda, Glue, ECS)', 'Apache Kafka', 'Docker',
+      'Git', 'Bloomberg', 'Capital IQ',
     ],
   },
   {
     category: 'Finance & Quant',
     icon: TrendingUp,
-    color: 'from-emerald-500 to-teal-600',
+    color: 'from-accent to-accent-dark',
     tagColor: {
-      dark: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20',
-      light: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      dark: 'bg-accent/10 text-accent-light border-accent/20',
+      light: 'bg-accent/10 text-accent-dark border-accent/30',
     },
     skills: [
-      'Derivative Pricing', 'Monte Carlo Methods', 'Risk Management / VaR',
-      'Portfolio Management',
-      'GARCH / Volatility Modeling', 'Backtesting Frameworks',
+      'Monte Carlo Simulation', 'Stochastic Modeling', 'GARCH', 'VaR',
+      'Expected Shortfall', 'MLE', 'Black-Scholes', 'Binomial Trees',
+      'Portfolio Optimization', 'Variance Reduction', 'Cross-Validation', 'Risk Modeling',
     ],
   },
   {
     category: 'Machine Learning',
     icon: Brain,
-    color: 'from-violet-500 to-purple-600',
+    color: 'from-rust to-rust-dark',
     tagColor: {
-      dark: 'bg-violet-500/10 text-violet-300 border-violet-500/20',
-      light: 'bg-violet-50 text-violet-700 border-violet-200',
+      dark: 'bg-rust/10 text-rust-light border-rust/20',
+      light: 'bg-rust/10 text-rust-dark border-rust/30',
     },
     skills: [
-      'Time Series (ARIMA, GARCH)', 'FinBERT / NLP',
-      'Explainable AI (SHAP)', 'Gradient Boosting (XGBoost)',
-      'Scikit-learn / Pandas', 'LSTM / RNN',
+      'Probability & Stochastic Processes', 'Linear Algebra', 'Time Series Analysis',
+      'XGBoost', 'LightGBM', 'Neural Networks', 'Bayesian Optimization',
+      'Explainable AI (SHAP)', 'Logistic Regression',
     ],
   },
   {
     category: 'AI Tools & Systems',
     icon: Bot,
-    color: 'from-orange-500 to-rose-600',
+    color: 'from-market to-market-dark',
     tagColor: {
-      dark: 'bg-orange-500/10 text-orange-300 border-orange-500/20',
-      light: 'bg-orange-50 text-orange-700 border-orange-200',
+      dark: 'bg-market/10 text-market-light border-market/20',
+      light: 'bg-market/10 text-market-dark border-market/30',
     },
     skills: [
-      'LLM, LSM, LWM', 'Anthropic API / Claude Code',
+      'Agentic AI', 'GenAI', 'Anthropic API / Claude Code',
       'Multi-Agent Orchestration', 'MCP (Model Context Protocol)',
-      'GitHub Copilot', 'LangChain / Agents',
+      'GitHub Copilot', 'LangChain',
     ],
   },
+]
+
+const CERTIFICATIONS = [
+  'Finance and Quantitative Modeling',
+  'Machine Learning',
+  'IBM Data Science',
+  'LangChain',
 ]
 
 function SkillCard({ group, index, darkMode }) {
@@ -75,17 +82,17 @@ function SkillCard({ group, index, darkMode }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.08 }}
       className={`rounded-2xl border p-6 ${
-        darkMode ? 'border-blue-500/10 bg-navy-900' : 'border-slate-200 bg-white shadow-sm'
+        darkMode ? 'border-accent/10 bg-ink-900' : 'border-stone-200 bg-white shadow-sm'
       }`}
     >
       <div className="flex items-center gap-3 mb-4">
         <div className={`w-8 h-8 rounded-lg flex items-center justify-center border ${
-          darkMode ? 'border-slate-600 bg-transparent' : 'border-slate-300 bg-transparent'
+          darkMode ? 'border-stone-600 bg-transparent' : 'border-stone-300 bg-transparent'
         }`}>
-          <Icon size={15} className={darkMode ? 'text-white' : 'text-slate-600'} />
+          <Icon size={15} className={darkMode ? 'text-white' : 'text-stone-600'} />
         </div>
         <h3 className={`text-sm font-semibold tracking-wide uppercase ${
-          darkMode ? 'text-slate-300' : 'text-slate-700'
+          darkMode ? 'text-stone-300' : 'text-stone-700'
         }`}>
           {group.category}
         </h3>
@@ -110,7 +117,7 @@ function SkillCard({ group, index, darkMode }) {
 
 export default function Skills({ darkMode }) {
   return (
-    <SectionWrapper id="skills" className={darkMode ? 'bg-[#080e20]' : 'bg-slate-50'}>
+    <SectionWrapper id="skills" className={darkMode ? 'bg-ink-950' : 'bg-stone-50'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Skills"
@@ -122,6 +129,23 @@ export default function Skills({ darkMode }) {
         <div className="grid sm:grid-cols-2 gap-6">
           {SKILL_GROUPS.map((group, i) => (
             <SkillCard key={group.category} group={group} index={i} darkMode={darkMode} />
+          ))}
+        </div>
+
+        {/* Certifications */}
+        <div className="mt-8 flex flex-wrap items-center gap-3">
+          <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
+            Certifications
+          </span>
+          {CERTIFICATIONS.map(cert => (
+            <span
+              key={cert}
+              className={`px-3 py-1 text-xs rounded-full border font-medium ${
+                darkMode ? 'border-accent/20 text-accent-light bg-accent/5' : 'border-accent/30 text-accent-dark bg-accent/5'
+              }`}
+            >
+              {cert}
+            </span>
           ))}
         </div>
       </div>

@@ -28,11 +28,11 @@ export function SectionHeader({ eyebrow, title, subtitle, darkMode }) {
           {eyebrow}
         </span>
       </div>
-      <h2 className={`font-serif text-3xl sm:text-4xl font-bold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+      <h2 className={`font-serif text-3xl sm:text-4xl font-bold ${darkMode ? 'text-white' : 'text-stone-900'}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={`mt-4 text-base max-w-2xl ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+        <p className={`mt-4 text-base max-w-2xl ${darkMode ? 'text-stone-400' : 'text-stone-600'}`}>
           {subtitle}
         </p>
       )}

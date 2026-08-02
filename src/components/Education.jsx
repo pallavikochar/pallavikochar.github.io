@@ -12,21 +12,23 @@ const EDUCATION = [
     concLabel: 'Concentrations',
     period: 'Jan 2025 – May 2026',
     location: 'Champaign, IL',
+    gpa: '3.9/4.0',
     logoImg: `${import.meta.env.BASE_URL}uiuc.png`,
-    color: 'from-orange-500 to-amber-600',
-    accentDark: 'border-orange-500/20',
+    color: 'from-accent to-accent-dark',
+    accentDark: 'border-accent/20',
     courses: [
+      'Financial Risk Management',
       'Advanced Financial Derivatives',
+      'Quantitative Finance',
+      'Machine Learning',
       'Quantamental Investment',
       'Big Data Analytics',
       'Applied Portfolio Management',
-      'Machine Learning',
-      'Financial Risk Management',
       'Mergers & Acquisitions',
     ],
     highlights: [
-      'Derivative pricing, VaR modeling, Portfolio theory and Multi-agent trading systems',
-      'Course Grader, FIN501-Economics',
+      'Research Assistant, DeFi Crypto Asset Pricing',
+      'Course Assistant, Financial Economics',
       'MS in Finance Program Ambassador',
     ],
   },
@@ -39,16 +41,16 @@ const EDUCATION = [
     period: 'Jul 2018 – May 2022',
     location: 'Mumbai, India',
     logoImg: `${import.meta.env.BASE_URL}iitb.png`,
-    color: 'from-blue-600 to-indigo-700',
-    accentDark: 'border-blue-500/20',
+    color: 'from-steel to-steel-dark',
+    accentDark: 'border-steel/20',
     courses: [
-      'Process Systems Engineering',
-      'Numerical Methods & Computation',
-      'Probability & Statistics',
-      'Linear Algebra & Optimization',
-      'Operations Research',
+      'Probability & Stochastic Processes',
+      'Numerical Analysis',
+      'Differential Equations',
+      'Calculus',
+      'C++',
       'Economics',
-      'Advanced Data Analysis',
+      'Operations Research',
     ],
     highlights: [
       'Quantitative foundation in optimization and numerical methods',
@@ -69,17 +71,17 @@ function EducationCard({ edu, index, darkMode }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.15 }}
       className={`rounded-2xl border overflow-hidden ${
-        darkMode ? 'border-blue-500/10 bg-navy-900' : 'border-slate-200 bg-white shadow-sm'
+        darkMode ? 'border-accent/10 bg-ink-900' : 'border-stone-200 bg-white shadow-sm'
       }`}
     >
       <div className="p-6">
         {/* Header */}
         <div className="flex items-center gap-4 mb-5">
-          <div className="w-12 h-12 rounded-xl overflow-hidden bg-white flex-shrink-0 border border-slate-200 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-xl overflow-hidden bg-white flex-shrink-0 border border-stone-200 flex items-center justify-center">
             <img src={edu.logoImg} alt={edu.short} className="w-full h-full object-contain p-1" />
           </div>
           <div className="flex-1 min-w-0">
-            <h3 className={`text-base font-bold leading-tight ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <h3 className={`text-base font-bold leading-tight ${darkMode ? 'text-white' : 'text-stone-900'}`}>
               {edu.school}
             </h3>
             <p className="text-sm font-medium text-gradient mt-0.5">{edu.degree}</p>
@@ -87,7 +89,7 @@ function EducationCard({ edu, index, darkMode }) {
         </div>
 
         {/* Meta row */}
-        <div className={`flex flex-wrap gap-4 text-xs mb-4 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+        <div className={`flex flex-wrap gap-4 text-xs mb-4 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
           <span className="flex items-center gap-1.5">
             <CalendarDays size={11} />
             {edu.period}
@@ -96,29 +98,35 @@ function EducationCard({ edu, index, darkMode }) {
             <MapPin size={11} />
             {edu.location}
           </span>
+          {edu.gpa && (
+            <span className="flex items-center gap-1.5">
+              <Star size={11} />
+              GPA: {edu.gpa}
+            </span>
+          )}
         </div>
 
         {/* Concentrations */}
         <div className="flex flex-wrap items-center gap-1.5 mb-5">
-          <span className={`text-xs font-semibold uppercase tracking-wider mr-1 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+          <span className={`text-xs font-semibold uppercase tracking-wider mr-1 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
             {edu.concLabel}:
           </span>
           {edu.concentrations.map(c => (
             <span key={c} className={`px-2.5 py-0.5 text-xs rounded-full font-medium border ${
-              darkMode ? 'bg-white/5 text-slate-300 border-white/10' : 'bg-slate-50 text-slate-600 border-slate-200'
+              darkMode ? 'bg-white/5 text-stone-300 border-white/10' : 'bg-stone-50 text-stone-600 border-stone-200'
             }`}>
               {c}
             </span>
           ))}
         </div>
 
-        <div className={`border-t mb-5 ${darkMode ? 'border-white/5' : 'border-slate-100'}`} />
+        <div className={`border-t mb-5 ${darkMode ? 'border-white/5' : 'border-stone-100'}`} />
 
         {/* Highlights */}
         <div className="mb-5">
           <div className="flex items-center gap-2 mb-2.5">
-            <Star size={11} className={darkMode ? 'text-slate-500' : 'text-slate-400'} />
-            <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+            <Star size={11} className={darkMode ? 'text-stone-500' : 'text-stone-400'} />
+            <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
               Highlights
             </span>
           </div>
@@ -126,7 +134,7 @@ function EducationCard({ edu, index, darkMode }) {
             {edu.highlights.map((h, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className={`mt-1.5 w-1 h-1 rounded-full flex-shrink-0 bg-gradient-to-br ${edu.color}`} />
-                <span className={`text-xs leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>{h}</span>
+                <span className={`text-xs leading-relaxed ${darkMode ? 'text-stone-400' : 'text-stone-600'}`}>{h}</span>
               </li>
             ))}
           </ul>
@@ -135,15 +143,15 @@ function EducationCard({ edu, index, darkMode }) {
         {/* Coursework */}
         <div>
           <div className="flex items-center gap-2 mb-2.5">
-            <BookOpen size={11} className={darkMode ? 'text-slate-500' : 'text-slate-400'} />
-            <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+            <BookOpen size={11} className={darkMode ? 'text-stone-500' : 'text-stone-400'} />
+            <span className={`text-xs font-semibold uppercase tracking-wider ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
               Key Coursework
             </span>
           </div>
           <div className="flex flex-wrap gap-1.5">
             {edu.courses.map(c => (
               <span key={c} className={`px-2 py-0.5 text-xs rounded-md border ${
-                darkMode ? 'bg-navy-800 text-slate-400 border-slate-700' : 'bg-slate-50 text-slate-600 border-slate-200'
+                darkMode ? 'bg-ink-800 text-stone-400 border-stone-700' : 'bg-stone-50 text-stone-600 border-stone-200'
               }`}>
                 {c}
               </span>
@@ -157,7 +165,7 @@ function EducationCard({ edu, index, darkMode }) {
 
 export default function Education({ darkMode }) {
   return (
-    <SectionWrapper id="education" className={darkMode ? 'bg-navy-950' : 'bg-white'}>
+    <SectionWrapper id="education" className={darkMode ? 'bg-ink-950' : 'bg-white'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Education"

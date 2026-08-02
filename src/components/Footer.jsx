@@ -22,14 +22,14 @@ export default function Footer({ darkMode }) {
   return (
     <footer className={`border-t py-12 ${
       darkMode
-        ? 'bg-navy-950 border-blue-500/10'
-        : 'bg-white border-slate-200'
+        ? 'bg-ink-950 border-accent/10'
+        : 'bg-white border-stone-200'
     }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <div className="font-serif text-lg font-semibold text-gradient">Pallavi Kochar</div>
-            <p className={`text-xs mt-1 ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}>
+            <p className={`text-xs mt-1 ${darkMode ? 'text-stone-600' : 'text-stone-400'}`}>
               New York &nbsp;|&nbsp; Chicago &nbsp;|&nbsp; Remote
             </p>
           </div>
@@ -38,7 +38,7 @@ export default function Footer({ darkMode }) {
             <a
               href="mailto:pallavikochar8@gmail.com"
               aria-label="Email"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <Mail size={18} />
             </a>
@@ -47,7 +47,7 @@ export default function Footer({ darkMode }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <IconLinkedin size={18} />
             </a>
@@ -56,7 +56,7 @@ export default function Footer({ darkMode }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <IconGithub size={18} />
             </a>
@@ -66,7 +66,7 @@ export default function Footer({ darkMode }) {
             onClick={scrollTop}
             aria-label="Back to top"
             className={`flex items-center gap-2 text-xs font-medium transition-colors ${
-              darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'
+              darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'
             }`}
           >
             <ArrowUp size={14} />
@@ -75,7 +75,7 @@ export default function Footer({ darkMode }) {
         </div>
 
         <div className={`mt-8 pt-6 border-t text-center text-xs ${
-          darkMode ? 'border-blue-500/5 text-slate-700' : 'border-slate-100 text-slate-400'
+          darkMode ? 'border-accent/5 text-stone-700' : 'border-stone-100 text-stone-400'
         }`}>
           © {new Date().getFullYear()} Pallavi Kochar · Built with React &amp; Tailwind CSS
         </div>

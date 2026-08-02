@@ -5,22 +5,37 @@ export default {
   theme: {
     extend: {
       colors: {
-        navy: {
-          950: '#060b18',
-          900: '#0a1128',
-          800: '#0f1a3d',
-          700: '#162050',
+        ink: {
+          950: '#0d0c0a',
+          900: '#17140f',
+          800: '#211d16',
+          700: '#2b251c',
         },
         accent: {
-          DEFAULT: '#3b82f6',
-          light: '#60a5fa',
-          dark: '#1d4ed8',
+          DEFAULT: '#c9973d',
+          light: '#e0b563',
+          dark: '#9c7529',
+        },
+        market: {
+          DEFAULT: '#3e7a52',
+          light: '#5fa377',
+          dark: '#2c5a3c',
+        },
+        rust: {
+          DEFAULT: '#a6512c',
+          light: '#c97347',
+          dark: '#7c3b1e',
+        },
+        steel: {
+          DEFAULT: '#4a6b7a',
+          light: '#6e93a3',
+          dark: '#354f5a',
         },
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'monospace'],
+        serif: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"IBM Plex Mono"', 'monospace'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

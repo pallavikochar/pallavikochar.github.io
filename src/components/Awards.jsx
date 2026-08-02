@@ -6,10 +6,10 @@ import { Trophy, Zap, Star } from 'lucide-react'
 const AWARDS = [
   {
     icon: Star,
-    color: 'from-emerald-400 to-teal-500',
+    color: 'from-steel-light to-steel',
     badgeColor: {
-      dark: 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20',
-      light: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      dark: 'bg-steel/10 text-steel-light border-steel/20',
+      light: 'bg-steel/10 text-steel-dark border-steel/30',
     },
     title: 'Top 0.1% in JEE Examination',
     org: 'IIT Bombay',
@@ -19,10 +19,10 @@ const AWARDS = [
   },
   {
     icon: Zap,
-    color: 'from-amber-400 to-orange-500',
+    color: 'from-accent-light to-accent',
     badgeColor: {
-      dark: 'bg-amber-500/10 text-amber-400 border-amber-500/20',
-      light: 'bg-amber-50 text-amber-700 border-amber-200',
+      dark: 'bg-accent/10 text-accent-light border-accent/20',
+      light: 'bg-accent/10 text-accent-dark border-accent/30',
     },
     title: 'Fast-tracked Promotion',
     org: 'Kotak Securities Limited',
@@ -32,16 +32,16 @@ const AWARDS = [
   },
   {
     icon: Trophy,
-    color: 'from-blue-400 to-indigo-500',
+    color: 'from-market-light to-market',
     badgeColor: {
-      dark: 'bg-blue-500/10 text-blue-400 border-blue-500/20',
-      light: 'bg-blue-50 text-blue-700 border-blue-200',
+      dark: 'bg-market/10 text-market-light border-market/20',
+      light: 'bg-market/10 text-market-dark border-market/30',
     },
     title: 'IT Champion Award',
     org: 'Kotak Securities Limited',
-    date: 'Aug 2023',
+    date: 'FY 2023–24',
     description:
-      'FY23-24 IT Champion Award for technical leadership across critical infrastructure and automation at Kotak Securities.',
+      'FY 2023–24 IT Champion Award for technical leadership across critical infrastructure and automation at Kotak Securities.',
   },
 ]
 
@@ -58,7 +58,7 @@ function AwardCard({ award, index, darkMode }) {
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className={`relative rounded-2xl border overflow-hidden card-hover ${
-        darkMode ? 'border-blue-500/10 bg-navy-900' : 'border-slate-200 bg-white shadow-sm'
+        darkMode ? 'border-accent/10 bg-ink-900' : 'border-stone-200 bg-white shadow-sm'
       }`}
     >
       <div className="p-6">
@@ -70,7 +70,7 @@ function AwardCard({ award, index, darkMode }) {
 
           <div className="flex-1 min-w-0">
             <div className="flex flex-wrap items-center gap-2 mb-1">
-              <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-base font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>
                 {award.title}
               </h3>
               <span className={`px-2 py-0.5 text-xs rounded-full border ${badge}`}>
@@ -78,7 +78,7 @@ function AwardCard({ award, index, darkMode }) {
               </span>
             </div>
             <p className={`text-xs font-semibold mb-3 text-gradient`}>{award.org}</p>
-            <p className={`text-sm leading-relaxed ${darkMode ? 'text-slate-400' : 'text-slate-600'}`}>
+            <p className={`text-sm leading-relaxed ${darkMode ? 'text-stone-400' : 'text-stone-600'}`}>
               {award.description}
             </p>
           </div>
@@ -90,7 +90,7 @@ function AwardCard({ award, index, darkMode }) {
 
 export default function Awards({ darkMode }) {
   return (
-    <SectionWrapper id="awards" className={darkMode ? 'bg-navy-950' : 'bg-white'}>
+    <SectionWrapper id="awards" className={darkMode ? 'bg-ink-950' : 'bg-white'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Honors & Awards"

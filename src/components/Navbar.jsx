@@ -47,8 +47,8 @@ export default function Navbar({ darkMode, toggleDark }) {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? darkMode
-            ? 'bg-navy-950/90 backdrop-blur-md border-b border-blue-500/10 shadow-lg shadow-black/20'
-            : 'bg-white/90 backdrop-blur-md border-b border-blue-500/10 shadow-lg shadow-black/5'
+            ? 'bg-ink-950/90 backdrop-blur-md border-b border-accent/10 shadow-lg shadow-black/20'
+            : 'bg-white/90 backdrop-blur-md border-b border-accent/10 shadow-lg shadow-black/5'
           : 'bg-transparent'
       }`}
     >
@@ -57,7 +57,7 @@ export default function Navbar({ darkMode, toggleDark }) {
         <a
           href="#hero"
           onClick={e => { e.preventDefault(); handleNavClick('#hero') }}
-          className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 shadow-lg shadow-blue-500/25"
+          className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-accent to-accent-dark shadow-lg shadow-accent/25"
         >
           <span className="font-serif text-base font-bold tracking-wide text-white leading-none">PK</span>
         </a>
@@ -75,8 +75,8 @@ export default function Navbar({ darkMode, toggleDark }) {
                     active
                       ? 'text-accent'
                       : darkMode
-                        ? 'text-slate-400 hover:text-white'
-                        : 'text-slate-600 hover:text-slate-900'
+                        ? 'text-stone-400 hover:text-white'
+                        : 'text-stone-600 hover:text-stone-900'
                   }`}
                 >
                   {label}
@@ -99,8 +99,8 @@ export default function Navbar({ darkMode, toggleDark }) {
             aria-label="Toggle theme"
             className={`p-2 rounded-lg transition-colors ${
               darkMode
-                ? 'text-slate-400 hover:text-white hover:bg-white/5'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-black/5'
+                ? 'text-stone-400 hover:text-white hover:bg-white/5'
+                : 'text-stone-600 hover:text-stone-900 hover:bg-black/5'
             }`}
           >
             {darkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -116,7 +116,7 @@ export default function Navbar({ darkMode, toggleDark }) {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-lg text-slate-400 hover:text-white"
+            className="md:hidden p-2 rounded-lg text-stone-400 hover:text-white"
             onClick={() => setMenuOpen(o => !o)}
             aria-label="Toggle menu"
           >
@@ -133,7 +133,7 @@ export default function Navbar({ darkMode, toggleDark }) {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             className={`md:hidden overflow-hidden ${
-              darkMode ? 'bg-navy-950/95 border-b border-blue-500/10' : 'bg-white/95 border-b border-blue-500/10'
+              darkMode ? 'bg-ink-950/95 border-b border-accent/10' : 'bg-white/95 border-b border-accent/10'
             } backdrop-blur-md`}
           >
             <ul className="px-6 py-4 flex flex-col gap-1">
@@ -143,8 +143,8 @@ export default function Navbar({ darkMode, toggleDark }) {
                     onClick={() => handleNavClick(href)}
                     className={`w-full text-left px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                       darkMode
-                        ? 'text-slate-300 hover:text-white hover:bg-white/5'
-                        : 'text-slate-700 hover:text-slate-900 hover:bg-black/5'
+                        ? 'text-stone-300 hover:text-white hover:bg-white/5'
+                        : 'text-stone-700 hover:text-stone-900 hover:bg-black/5'
                     }`}
                   >
                     {label}

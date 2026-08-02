@@ -1,5 +1,4 @@
-import { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, Mail } from 'lucide-react'
 
 function IconGithub({ size = 20 }) {
@@ -18,41 +17,35 @@ function IconLinkedin({ size = 20 }) {
   )
 }
 
-// Animated chart line SVG motif
-function ChartLine({ className }) {
+// Ticker-tape strip of real result metrics — the signature element
+const TICKER_METRICS = [
+  '13.9% CAGR', '2.1% ALPHA', '0.35 SHARPE', '83% HIT RATE',
+  '$0.74 MC STD ERROR', '95% VaR CONFIDENCE', '11 RESEARCH AGENTS', '160K SEC FILING CHUNKS',
+]
+
+function MetricsTicker({ darkMode }) {
+  const reduceMotion = useReducedMotion()
+  const items = reduceMotion ? TICKER_METRICS : [...TICKER_METRICS, ...TICKER_METRICS]
+
   return (
-    <svg
-      viewBox="0 0 600 160"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden
+    <div
+      className={`absolute bottom-0 left-0 right-0 border-t py-2.5 ${
+        reduceMotion ? 'overflow-x-auto' : 'overflow-hidden'
+      } ${darkMode ? 'border-accent/10 bg-ink-950/70' : 'border-accent/20 bg-white/70'} backdrop-blur-sm`}
     >
-      <motion.path
-        d="M0 130 L60 110 L120 120 L180 80 L240 90 L300 50 L360 65 L420 30 L480 45 L540 20 L600 35"
-        stroke="rgba(59,130,246,0.35)"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 2.5, ease: 'easeOut', delay: 0.5 }}
-      />
-      <motion.path
-        d="M0 130 L60 110 L120 120 L180 80 L240 90 L300 50 L360 65 L420 30 L480 45 L540 20 L600 35 L600 160 L0 160 Z"
-        fill="url(#chartGrad)"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1.5, delay: 2.5 }}
-      />
-      <defs>
-        <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="rgba(59,130,246,0.12)" />
-          <stop offset="100%" stopColor="rgba(59,130,246,0)" />
-        </linearGradient>
-      </defs>
-    </svg>
+      <motion.div
+        className="flex gap-10 whitespace-nowrap font-mono text-[11px] tracking-widest uppercase w-max"
+        animate={reduceMotion ? undefined : { x: ['0%', '-50%'] }}
+        transition={reduceMotion ? undefined : { duration: 32, repeat: Infinity, ease: 'linear' }}
+      >
+        {items.map((m, i) => (
+          <span key={i} className="flex items-center gap-10">
+            <span className={darkMode ? 'text-accent-light/80' : 'text-accent-dark'}>{m}</span>
+            <span className={darkMode ? 'text-stone-700' : 'text-stone-300'}>·</span>
+          </span>
+        ))}
+      </motion.div>
+    </div>
   )
 }
 
@@ -63,8 +56,8 @@ function GridBackground({ darkMode }) {
       {/* Radial gradient glow */}
       <div className={`absolute inset-0 ${
         darkMode
-          ? 'bg-radial-gradient'
-          : 'bg-gradient-to-br from-blue-50 via-white to-indigo-50'
+          ? 'bg-[radial-gradient(ellipse_at_center,_rgba(201,151,61,0.07)_0%,_transparent_60%)]'
+          : 'bg-gradient-to-br from-amber-50 via-stone-50 to-orange-50/60'
       }`} />
 
       {/* Grid lines */}
@@ -74,15 +67,15 @@ function GridBackground({ darkMode }) {
       >
         <defs>
           <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-            <path d="M 60 0 L 0 0 0 60" fill="none" stroke={darkMode ? '#3b82f6' : '#1d4ed8'} strokeWidth="0.8" />
+            <path d="M 60 0 L 0 0 0 60" fill="none" stroke={darkMode ? '#c9973d' : '#9c7529'} strokeWidth="0.8" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#grid)" />
       </svg>
 
       {/* Glow blobs */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-blue-600/5 blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-indigo-600/5 blur-3xl" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-accent/5 blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-rust/5 blur-3xl" />
     </div>
   )
 }
@@ -119,7 +112,7 @@ export default function Hero({ darkMode }) {
     <section
       id="hero"
       className={`relative min-h-screen flex flex-col justify-center overflow-hidden ${
-        darkMode ? 'bg-navy-950' : 'bg-slate-50'
+        darkMode ? 'bg-ink-950' : 'bg-stone-50'
       }`}
     >
       <GridBackground darkMode={darkMode} />
@@ -129,11 +122,6 @@ export default function Hero({ darkMode }) {
         {nodes.map((n, i) => (
           <FloatingNode key={i} {...n} />
         ))}
-      </div>
-
-      {/* Chart motif bottom */}
-      <div className="absolute bottom-0 left-0 right-0 pointer-events-none">
-        <ChartLine className="w-full" />
       </div>
 
       {/* Content */}
@@ -159,7 +147,7 @@ export default function Hero({ darkMode }) {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight mb-6"
           >
-            <span className={darkMode ? 'text-white' : 'text-slate-900'}>Pallavi</span>{' '}
+            <span className={darkMode ? 'text-white' : 'text-stone-900'}>Pallavi</span>{' '}
             <span className="text-gradient">Kochar</span>
           </motion.h1>
 
@@ -169,11 +157,11 @@ export default function Hero({ darkMode }) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.35 }}
             className={`text-lg sm:text-xl lg:text-2xl font-light leading-relaxed mb-4 max-w-2xl ${
-              darkMode ? 'text-slate-300' : 'text-slate-600'
+              darkMode ? 'text-stone-300' : 'text-stone-600'
             }`}
           >
             Quantitative finance professional building at the intersection of{' '}
-            <span className={`font-medium ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+            <span className={`font-medium ${darkMode ? 'text-white' : 'text-stone-900'}`}>
               markets, data, and AI
             </span>
           </motion.p>
@@ -182,7 +170,7 @@ export default function Hero({ darkMode }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.5 }}
-            className={`text-sm sm:text-base mb-10 ${darkMode ? 'text-slate-500' : 'text-slate-500'}`}
+            className={`text-sm sm:text-base mb-10 ${darkMode ? 'text-stone-500' : 'text-stone-500'}`}
           >
             MS · UIUC &nbsp;|&nbsp; B.Tech · IIT Bombay
           </motion.p>
@@ -196,7 +184,7 @@ export default function Hero({ darkMode }) {
           >
             <button
               onClick={() => handleScroll('projects')}
-              className="px-6 py-3 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/25"
+              className="px-6 py-3 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-accent/25"
             >
               View Work
             </button>
@@ -206,8 +194,8 @@ export default function Hero({ darkMode }) {
               rel="noopener noreferrer"
               className={`px-6 py-3 text-sm font-semibold rounded-lg border transition-all duration-200 ${
                 darkMode
-                  ? 'border-slate-600 text-slate-300 hover:border-accent hover:text-accent'
-                  : 'border-slate-300 text-slate-700 hover:border-accent hover:text-accent'
+                  ? 'border-stone-600 text-stone-300 hover:border-accent hover:text-accent'
+                  : 'border-stone-300 text-stone-700 hover:border-accent hover:text-accent'
               }`}
             >
               Resume
@@ -216,8 +204,8 @@ export default function Hero({ darkMode }) {
               onClick={() => handleScroll('contact')}
               className={`px-6 py-3 text-sm font-semibold rounded-lg transition-all duration-200 ${
                 darkMode
-                  ? 'text-slate-400 hover:text-white'
-                  : 'text-slate-600 hover:text-slate-900'
+                  ? 'text-stone-400 hover:text-white'
+                  : 'text-stone-600 hover:text-stone-900'
               }`}
             >
               Contact →
@@ -234,7 +222,7 @@ export default function Hero({ darkMode }) {
             <a
               href="mailto:pallavikochar8@gmail.com"
               aria-label="Email"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <Mail size={20} />
             </a>
@@ -243,7 +231,7 @@ export default function Hero({ darkMode }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <IconLinkedin size={20} />
             </a>
@@ -252,7 +240,7 @@ export default function Hero({ darkMode }) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className={`transition-colors ${darkMode ? 'text-slate-500 hover:text-accent' : 'text-slate-400 hover:text-accent'}`}
+              className={`transition-colors ${darkMode ? 'text-stone-500 hover:text-accent' : 'text-stone-400 hover:text-accent'}`}
             >
               <IconGithub size={20} />
             </a>
@@ -265,18 +253,20 @@ export default function Hero({ darkMode }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-14 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className={`text-xs font-mono tracking-widest uppercase ${darkMode ? 'text-slate-600' : 'text-slate-400'}`}>
+        <span className={`text-xs font-mono tracking-widest uppercase ${darkMode ? 'text-stone-600' : 'text-stone-400'}`}>
           scroll
         </span>
         <motion.div
           animate={{ y: [0, 6, 0] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
         >
-          <ArrowDown size={14} className={darkMode ? 'text-slate-600' : 'text-slate-400'} />
+          <ArrowDown size={14} className={darkMode ? 'text-stone-600' : 'text-stone-400'} />
         </motion.div>
       </motion.div>
+
+      <MetricsTicker darkMode={darkMode} />
     </section>
   )
 }

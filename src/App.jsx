@@ -23,7 +23,7 @@ export default function App() {
   }, [darkMode])
 
   return (
-    <div className={darkMode ? 'bg-navy-950' : 'bg-slate-50'}>
+    <div className={darkMode ? 'bg-ink-950' : 'bg-stone-50'}>
       <Navbar darkMode={darkMode} toggleDark={() => setDarkMode(d => !d)} />
       <main>
         <Hero darkMode={darkMode} />

@@ -16,7 +16,7 @@ const HONORS = [
   },
   {
     title: 'IT Champion Award',
-    meta: 'Kotak Securities · FY23-24',
+    meta: 'Kotak Securities · FY 2023–24',
   },
 ]
 
@@ -25,7 +25,7 @@ export default function About({ darkMode }) {
   const inView = useInView(imgRef, { once: true, margin: '-60px' })
 
   return (
-    <SectionWrapper id="about" className={darkMode ? 'bg-navy-950' : 'bg-white'}>
+    <SectionWrapper id="about" className={darkMode ? 'bg-ink-950' : 'bg-white'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="About"
@@ -36,22 +36,23 @@ export default function About({ darkMode }) {
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Text */}
           <div className="space-y-6">
-            <p className={`text-base leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+            <p className={`text-base leading-relaxed ${darkMode ? 'text-stone-300' : 'text-stone-700'}`}>
               My background spans three disciplines:
-              rigorous engineering from <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>IIT Bombay</span> (B.Tech, Chemical Engineering),
-              deep financial theory from <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>UIUC's Gies College of Business</span> (MS Finance,
-              concentrations in Asset Management and Quantitative Finance), and three years of
-              production backend engineering at <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>Kotak Securities</span>.
+              rigorous engineering from <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>IIT Bombay</span> (B.Tech, Chemical Engineering),
+              deep financial theory from <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>UIUC's Gies College of Business</span> (MS Finance,
+              concentration in Quantitative Finance &amp; Data Analytics, 3.9/4.0 GPA), and three years of
+              production backend engineering at <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>Kotak Securities</span>.
             </p>
-            <p className={`text-base leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+            <p className={`text-base leading-relaxed ${darkMode ? 'text-stone-300' : 'text-stone-700'}`}>
               That combination of quant rigor, systems thinking, and hands-on ML lets me work
               fluidly across derivative pricing, data pipeline architecture, and explainable AI.
               I'm drawn to problems where market microstructure meets machine learning: from
               multi-agent trading systems to structured product Monte Carlo engines.
             </p>
-            <p className={`text-base leading-relaxed ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
-              Most recently, I was a <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>Data Product Engineer Intern at FAlpha.ai</span>, where I built
-              an explainability layer over prediction models using SHAP and integrated gradients.
+            <p className={`text-base leading-relaxed ${darkMode ? 'text-stone-300' : 'text-stone-700'}`}>
+              Most recently, I was a <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>Quant Data Engineer Intern at fAlpha.ai</span>, where I built
+              a SHAP-based feature attribution framework for multi-factor equity models and an
+              LLM-powered synthesis layer for structured equity research briefs.
             </p>
 
             {/* Key interests */}
@@ -61,8 +62,8 @@ export default function About({ darkMode }) {
                   key={tag}
                   className={`px-3 py-1 text-xs font-medium rounded-full border ${
                     darkMode
-                      ? 'border-blue-500/20 text-accent-light bg-blue-500/5'
-                      : 'border-blue-300 text-accent-dark bg-blue-50'
+                      ? 'border-accent/20 text-accent-light bg-accent/5'
+                      : 'border-accent/30 text-accent-dark bg-accent/5'
                   }`}
                 >
                   {tag}
@@ -79,7 +80,7 @@ export default function About({ darkMode }) {
               animate={inView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
               className={`relative rounded-2xl overflow-hidden aspect-[4/3] border ${
-                darkMode ? 'border-blue-500/15' : 'border-blue-200'
+                darkMode ? 'border-accent/15' : 'border-accent/25'
               }`}
             >
               <img
@@ -100,19 +101,19 @@ export default function About({ darkMode }) {
                   whileHover={{ y: -3, scale: 1.02 }}
                   className={`relative p-4 rounded-xl border overflow-hidden cursor-default group transition-shadow duration-300 ${
                     darkMode
-                      ? 'border-blue-500/10 bg-navy-900 hover:border-blue-500/30 hover:shadow-lg hover:shadow-blue-500/10'
-                      : 'border-slate-200 bg-white hover:border-blue-300 hover:shadow-md'
+                      ? 'border-accent/10 bg-ink-900 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10'
+                      : 'border-stone-200 bg-white hover:border-accent/40 hover:shadow-md'
                   }`}
                 >
                   {/* Subtle gradient glow on hover */}
                   <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
                     darkMode
-                      ? 'bg-gradient-to-br from-blue-500/5 to-transparent'
-                      : 'bg-gradient-to-br from-blue-50 to-transparent'
+                      ? 'bg-gradient-to-br from-accent/5 to-transparent'
+                      : 'bg-gradient-to-br from-accent/5 to-transparent'
                   }`} />
                   <div className="relative">
                     <p className={`text-sm font-bold leading-snug text-gradient`}>{title}</p>
-                    <p className={`text-xs mt-1 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>{meta}</p>
+                    <p className={`text-xs mt-1 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>{meta}</p>
                   </div>
                 </motion.div>
               ))}

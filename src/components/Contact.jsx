@@ -57,14 +57,14 @@ function QuickLink({ item, darkMode }) {
   return (
     <div className={`flex items-center gap-3 p-3.5 rounded-xl border group transition-colors ${
       darkMode
-        ? 'border-blue-500/10 bg-navy-900 hover:border-blue-500/20'
-        : 'border-slate-200 bg-white hover:border-blue-300 shadow-sm'
+        ? 'border-accent/10 bg-ink-900 hover:border-accent/20'
+        : 'border-stone-200 bg-white hover:border-accent/40 shadow-sm'
     }`}>
-      <div className="p-2 rounded-lg bg-gradient-to-br from-blue-500 to-indigo-600 flex-shrink-0">
+      <div className="p-2 rounded-lg bg-gradient-to-br from-accent to-accent-dark flex-shrink-0">
         <Icon size={14} className="text-white" />
       </div>
       <div className="flex-1 min-w-0">
-        <div className={`text-xs font-medium uppercase tracking-wide mb-0.5 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+        <div className={`text-xs font-medium uppercase tracking-wide mb-0.5 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
           {item.label}
         </div>
         <a
@@ -72,7 +72,7 @@ function QuickLink({ item, darkMode }) {
           target={item.href.startsWith('http') ? '_blank' : undefined}
           rel="noopener noreferrer"
           className={`text-sm font-medium truncate block transition-colors ${
-            darkMode ? 'text-slate-200 hover:text-accent' : 'text-slate-700 hover:text-accent'
+            darkMode ? 'text-stone-200 hover:text-accent' : 'text-stone-700 hover:text-accent'
           }`}
         >
           {item.value}
@@ -82,10 +82,10 @@ function QuickLink({ item, darkMode }) {
         <button
           onClick={handleCopy}
           className={`p-1.5 rounded-lg transition-colors opacity-0 group-hover:opacity-100 ${
-            darkMode ? 'hover:bg-navy-800 text-slate-400' : 'hover:bg-slate-100 text-slate-400'
+            darkMode ? 'hover:bg-ink-800 text-stone-400' : 'hover:bg-stone-100 text-stone-400'
           }`}
         >
-          {copied ? <Check size={13} className="text-emerald-400" /> : <Copy size={13} />}
+          {copied ? <Check size={13} className="text-market-light" /> : <Copy size={13} />}
         </button>
       )}
     </div>
@@ -95,19 +95,19 @@ function QuickLink({ item, darkMode }) {
 function InputField({ label, icon: Icon, error, darkMode, ...props }) {
   return (
     <div>
-      <label className={`block text-xs font-medium uppercase tracking-wide mb-1.5 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+      <label className={`block text-xs font-medium uppercase tracking-wide mb-1.5 ${darkMode ? 'text-stone-400' : 'text-stone-500'}`}>
         {label} {props.required && <span className="text-accent">*</span>}
       </label>
       <div className="relative">
-        <div className={`absolute left-3 top-1/2 -translate-y-1/2 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+        <div className={`absolute left-3 top-1/2 -translate-y-1/2 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
           <Icon size={15} />
         </div>
         <input
           {...props}
           className={`w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border outline-none transition-colors ${
             darkMode
-              ? 'bg-navy-800 border-blue-500/15 text-slate-200 placeholder-slate-600 focus:border-accent focus:bg-navy-800'
-              : 'bg-white border-slate-200 text-slate-800 placeholder-slate-400 focus:border-accent'
+              ? 'bg-ink-800 border-accent/15 text-stone-200 placeholder-stone-600 focus:border-accent focus:bg-ink-800'
+              : 'bg-white border-stone-200 text-stone-800 placeholder-stone-400 focus:border-accent'
           } ${error ? 'border-red-500/60' : ''}`}
         />
       </div>
@@ -158,7 +158,7 @@ export default function Contact({ darkMode }) {
   }
 
   return (
-    <SectionWrapper id="contact" className={darkMode ? 'bg-[#080e20]' : 'bg-slate-50'}>
+    <SectionWrapper id="contact" className={darkMode ? 'bg-ink-950' : 'bg-stone-50'}>
       <div className="max-w-7xl mx-auto px-6">
         <SectionHeader
           eyebrow="Contact"
@@ -175,22 +175,22 @@ export default function Contact({ darkMode }) {
           >
             {/* Availability badge */}
             <div className={`inline-flex items-center gap-2.5 px-4 py-2 rounded-full border mb-8 ${
-              darkMode ? 'border-emerald-500/25 bg-emerald-500/5' : 'border-emerald-300 bg-emerald-50'
+              darkMode ? 'border-market/25 bg-market/5' : 'border-market/40 bg-market/10'
             }`}>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-market-light opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-market" />
               </span>
-              <span className={`text-xs font-medium ${darkMode ? 'text-emerald-400' : 'text-emerald-700'}`}>
+              <span className={`text-xs font-medium ${darkMode ? 'text-market-light' : 'text-market-dark'}`}>
                 Actively looking for opportunities
               </span>
             </div>
 
-            <p className={`text-lg leading-relaxed mb-8 ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+            <p className={`text-lg leading-relaxed mb-8 ${darkMode ? 'text-stone-300' : 'text-stone-700'}`}>
               I'm looking for roles in{' '}
-              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>quantitative research</span>,{' '}
-              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>data engineering</span>, and{' '}
-              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-slate-900'}`}>AI-driven fintech</span>.
+              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>quantitative research</span>,{' '}
+              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>data engineering</span>, and{' '}
+              <span className={`font-semibold ${darkMode ? 'text-white' : 'text-stone-900'}`}>AI-driven fintech</span>.
               If you're working on something interesting, I'd love to talk.
             </p>
 
@@ -208,9 +208,9 @@ export default function Contact({ darkMode }) {
             transition={{ duration: 0.5, delay: 0.15 }}
           >
             <div className={`rounded-2xl border p-7 ${
-              darkMode ? 'border-blue-500/10 bg-navy-900' : 'border-slate-200 bg-white shadow-sm'
+              darkMode ? 'border-accent/10 bg-ink-900' : 'border-stone-200 bg-white shadow-sm'
             }`}>
-              <h3 className={`text-base font-semibold mb-5 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+              <h3 className={`text-base font-semibold mb-5 ${darkMode ? 'text-white' : 'text-stone-900'}`}>
                 Send a message
               </h3>
 
@@ -219,13 +219,13 @@ export default function Contact({ darkMode }) {
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className={`flex flex-col items-center justify-center py-12 text-center ${
-                    darkMode ? 'text-slate-300' : 'text-slate-700'
+                    darkMode ? 'text-stone-300' : 'text-stone-700'
                   }`}
                 >
-                  <div className="w-14 h-14 rounded-full bg-emerald-500/15 flex items-center justify-center mb-4">
-                    <Check size={24} className="text-emerald-400" />
+                  <div className="w-14 h-14 rounded-full bg-market/15 flex items-center justify-center mb-4">
+                    <Check size={24} className="text-market-light" />
                   </div>
-                  <p className={`text-base font-semibold mb-1 ${darkMode ? 'text-white' : 'text-slate-900'}`}>
+                  <p className={`text-base font-semibold mb-1 ${darkMode ? 'text-white' : 'text-stone-900'}`}>
                     Message received!
                   </p>
                   <p className="text-sm">I'll get back to you soon.</p>
@@ -274,11 +274,11 @@ export default function Contact({ darkMode }) {
                   />
 
                   <div>
-                    <label className={`block text-xs font-medium uppercase tracking-wide mb-1.5 ${darkMode ? 'text-slate-400' : 'text-slate-500'}`}>
+                    <label className={`block text-xs font-medium uppercase tracking-wide mb-1.5 ${darkMode ? 'text-stone-400' : 'text-stone-500'}`}>
                       Message <span className="text-accent">*</span>
                     </label>
                     <div className="relative">
-                      <div className={`absolute left-3 top-3 ${darkMode ? 'text-slate-500' : 'text-slate-400'}`}>
+                      <div className={`absolute left-3 top-3 ${darkMode ? 'text-stone-500' : 'text-stone-400'}`}>
                         <MessageSquare size={15} />
                       </div>
                       <textarea
@@ -288,8 +288,8 @@ export default function Contact({ darkMode }) {
                         onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
                         className={`w-full pl-9 pr-4 py-2.5 text-sm rounded-lg border outline-none transition-colors resize-none ${
                           darkMode
-                            ? 'bg-navy-800 border-blue-500/15 text-slate-200 placeholder-slate-600 focus:border-accent'
-                            : 'bg-white border-slate-200 text-slate-800 placeholder-slate-400 focus:border-accent'
+                            ? 'bg-ink-800 border-accent/15 text-stone-200 placeholder-stone-600 focus:border-accent'
+                            : 'bg-white border-stone-200 text-stone-800 placeholder-stone-400 focus:border-accent'
                         } ${errors.message ? 'border-red-500/60' : ''}`}
                       />
                     </div>
@@ -303,7 +303,7 @@ export default function Contact({ darkMode }) {
                   <button
                     type="submit"
                     disabled={status === 'loading'}
-                    className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-blue-500/25 disabled:opacity-60 disabled:cursor-not-allowed"
+                    className="w-full flex items-center justify-center gap-2 py-3 px-6 bg-accent hover:bg-accent-dark text-white text-sm font-semibold rounded-lg transition-all hover:shadow-lg hover:shadow-accent/25 disabled:opacity-60 disabled:cursor-not-allowed"
                   >
                     {status === 'loading' ? (
                       <>
